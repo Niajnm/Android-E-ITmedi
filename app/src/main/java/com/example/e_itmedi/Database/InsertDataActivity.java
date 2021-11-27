@@ -20,17 +20,14 @@ public class InsertDataActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_data);
-
-
         databaseHelper = new DatabaseHelper(this);
-        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
 
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
         textID = findViewById(R.id.edittextID_id);
         textTitle = findViewById(R.id.edittextTitle_id);
         textPrice = findViewById(R.id.edittextprice_id);
         textDetails = findViewById(R.id.edittextDtails_id);
         buttonadd = findViewById(R.id.buttonAdd_id);
-
 
         buttonadd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,25 +38,21 @@ public class InsertDataActivity extends AppCompatActivity {
                 String price = textPrice.getText().toString();
                 String details = textDetails.getText().toString();
 
-              long rowid=  databaseHelper.insertData(title,id,price,details);
-              
-              if (rowid > -1){
+                long rowid = databaseHelper.insertData(title, id, price, details);
 
-                  Toast.makeText(InsertDataActivity.this, "Serial :"+rowid+" Added", Toast.LENGTH_SHORT).show();
-                  textID.setText("");
-                  textTitle.setText("");
-                  textPrice.setText("");
-                  textDetails.setText("");
+                if (rowid > -1) {
 
-              }
-              else {
+                    Toast.makeText(InsertDataActivity.this, "Serial :" + rowid + " Added", Toast.LENGTH_SHORT).show();
+                    textID.setText("");
+                    textTitle.setText("");
+                    textPrice.setText("");
+                    textDetails.setText("");
 
-
-                  Toast.makeText(InsertDataActivity.this, "Insert Error ", Toast.LENGTH_SHORT).show();
-              }
+                } else {
+                    Toast.makeText(InsertDataActivity.this, "Insert Error ", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
-
     }
 }

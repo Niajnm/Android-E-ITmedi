@@ -12,12 +12,10 @@ import androidx.annotation.Nullable;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Student_DB";
     private static final String TABLE_NAME = "products";
-
     private static final String TITLE = "Title";
     private static final String PRICE = "Price";
     private static final String DETAILS = "Details";
     private static final String ID = "id_";
-
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
     private static final int VERSION_NUM = 2;
@@ -32,14 +30,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
-
-
             db.execSQL(CREATE_TABLE);
             Toast.makeText(context, "oncreate", Toast.LENGTH_SHORT).show();
-
-
         } catch (Exception e) {
-
             Toast.makeText(context, "EXCEPTION" + e, Toast.LENGTH_SHORT).show();
         }
 
@@ -49,7 +42,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-
 
     public long insertData(String title, String id, String price, String details) {
 
@@ -63,8 +55,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long row = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
 
         return row;
-
-
     }
 
     public Cursor dsiplayData() {
@@ -73,7 +63,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
         return cursor;
-
-
     }
 }

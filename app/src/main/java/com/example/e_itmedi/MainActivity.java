@@ -107,11 +107,6 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
         Cursor cursor = databaseHelper.dsiplayData();
         ArrayList<DataResponse> Rdata = loadData(cursor);
-//                        for (int i = 0; i < Rdata.size(); i++) {
-//                    Log.d(TAG, "Title: " + Rdata.get(i).getTT());
-//                    Log.d(TAG, "pri: " + Rdata.get(i).getPP());
-//                    Log.d(TAG, "Description: " + Rdata.get(i).getDD());
-//                }
 
         CustomAdapter customAdapter = new CustomAdapter(MainActivity.this, Rdata);
         recyclerView.setAdapter(customAdapter);
